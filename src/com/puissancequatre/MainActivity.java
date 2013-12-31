@@ -9,8 +9,9 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//j'ajoute ce commentaire par ex et j'enregistre///s
-		//setContentView(R.layout.activity_main);
+		//j'ajoute ce commentaire par ex et j'enregistre
+		// un commentaire nimportkoi pour voir
+		setContentView(R.layout.activity_main);
 	}
 
 	@Override
