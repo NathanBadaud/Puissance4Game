@@ -33,7 +33,9 @@
                 android:gravity="center|left"
                 android:minWidth="300dp"
                 android:text="@string/play"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="one_player"
+                 />
 
         </TableRow>
 
@@ -53,7 +55,9 @@
                 android:gravity="center|left"
                 android:text="@string/multiplay"
                 android:textStyle="bold" 
-                android:drawablePadding="57dp"/>
+                android:drawablePadding="57dp"
+                android:onClick="two_player"
+                />
         </TableRow>
 
         <TableRow
@@ -72,7 +76,9 @@
                 android:gravity="center|left"
                 android:text="@string/score"
                 android:textStyle="bold"
-                android:drawablePadding="46dp" />
+                android:drawablePadding="46dp"
+                android:onClick="score"
+                 />
         </TableRow>
 
         <TableRow
@@ -91,7 +97,9 @@
                 android:gravity="center|left"
                 android:text="@string/about"
                 android:textStyle="bold" 
-                android:drawablePadding="46dp" />
+                android:drawablePadding="46dp" 
+                android:onClick="about"
+                />
         </TableRow>
 
         <TableRow
@@ -111,7 +119,9 @@
                 android:gravity="center|left"
                 android:text="@string/exit"
                 android:textStyle="bold" 
-                android:drawablePadding="46dp" />
+                android:drawablePadding="46dp"
+                android:onClick="exit"
+                 />
         </TableRow>
     </TableLayout>
 
