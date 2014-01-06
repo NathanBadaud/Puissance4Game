@@ -1,6 +1,3 @@
-<<<<<<< Original
-<?xml version="1.0" encoding="utf-8"?>
-<<<<<<< Original
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.puissancequatre"
@@ -31,35 +28,29 @@
             android:label="@string/title_activity_play"
             android:theme="@style/FullscreenTheme" >
         </activity>
-        <activity
+        
+        <!-- duplicate  <activity
             android:name="com.puissancequatre.PlayActivity"
             android:label="@string/title_activity_play" >
         </activity>
-    </application>
-
-</manifest>=======
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <application>
+        -->
+        
+        <!-- hicham modif ====>  duplicate regisration
+        
         <activity
             android:name="com.puissancequatre.Play"
             android:label="@string/title_activity_play" >
         </activity>
-    </application>
-
-</manifest>>>>>>>> Added
-
-=======
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <application>
-        <activity android:name=".PlayActivity"
+        
+        -->
+        <!-- hicham modif -->
+        
+        <activity android:name="com.puissancequatre.PlayActivity"
             android:label="@string/title_activity_play"
             android:parentActivityName="com.puissancequatre">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.puissancequatre" />
         </activity>
-    </application>
-
+        </application>
 </manifest>
->>>>>>> Added
+<!-- hicham modif -->

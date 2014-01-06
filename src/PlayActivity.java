@@ -1,4 +1,5 @@
-package ;
+
+import com.puissancequatre.R;
 
 import android.os.Bundle;
 import android.app.Activity;
