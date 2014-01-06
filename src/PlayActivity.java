@@ -1,4 +1,3 @@
-
 import com.puissancequatre.R;
 
 import android.os.Bundle;

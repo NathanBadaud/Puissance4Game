@@ -1,6 +1,5 @@
 package com.puissancequatre;
 
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -24,30 +23,30 @@ public class MainActivity extends Activity {
 	
 	 public void two_player(View view) {
 
-	        Intent intent = new Intent(this, Play.class);
+	        Intent intent = new Intent(this, TwoPlayers.class);
 	        startActivity(intent);
 
 	    }
 	    public void one_player(View view) {
 
-	        Intent intent = new Intent(this, Play.class);
+	        Intent intent = new Intent(this, OnePlayer.class);
 	        startActivity(intent);
 
 	    }
 	    public void score(View view) {
 
 
-	        Intent intent = new Intent(this, Play.class);
+	        Intent intent = new Intent(this, Score.class);
 	        startActivity(intent);
 
 	    }
-
+/*
 	    public void about(View view) {
 
 	        Intent intent = new Intent(this, Play.class);
 	        startActivity(intent);
 
-	    }
+	    }*/
 	    
 	    public void exit(View view) {
 	    	System.exit(0);
