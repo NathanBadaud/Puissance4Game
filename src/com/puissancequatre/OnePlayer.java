@@ -23,16 +23,18 @@ int nb_coup=0;
 
 	    @Override
     public void onCreate(Bundle savedInstanceState){
-        String txt = new String();
-        TextView tv = new TextView(this);
-       // accelerometre = new Capteur();
-
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.tableau);
+	    } // "}" a effacer
+	    /********
+	   String txt = new String();
+      TextView tv = new TextView(this);
+      accelerometre = new Capteur();
+      
         SensorManager m = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
       //  m.registerListener(accelerometre, SensorManager.SENSOR_ACCELEROMETER);
 
-        setContentView(R.layout.tableau);
+        
         init(tab);
 
 
@@ -93,7 +95,7 @@ int nb_coup=0;
                          }*/
 
 
-
+/*************
 
                     }
                 });
@@ -154,6 +156,8 @@ int nb_coup=0;
 	        int gagnant=0;
 	        /* Context context = getApplicationContext();
 	int duration = Toast.LENGTH_SHORT;     */
+	
+	/***************
 	        AlertDialog.Builder fenetre = new AlertDialog.Builder(this);
 	        fenetre.setTitle("Resultat");
 	        fenetre.setPositiveButton("recommencer", new DialogInterface.OnClickListener() {
@@ -206,5 +210,5 @@ int nb_coup=0;
 	        }
 	        return gagnant;
 	        
-	    }
+	    }*************/
 }

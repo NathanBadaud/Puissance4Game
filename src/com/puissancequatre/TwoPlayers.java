@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public final class TwoPlayers extends Activity {
 
-
+/**************
 
 	    static final int nb_row = 6;
 	    static final int nb_column = 7;
@@ -24,12 +24,14 @@ public final class TwoPlayers extends Activity {
 
 	    boolean isYellowTurn;
 	    int nb_coup = 0;
-
+**************/
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-
 	        setContentView(R.layout.tableau);
+	        }// "}" a effacer
+	        
+	        /**************
 	        init(tab);
 
 
@@ -133,7 +135,10 @@ public final class TwoPlayers extends Activity {
 	        int gagnant = 0;
 	        /* Context context = getApplicationContext();
 	int duration = Toast.LENGTH_SHORT;     */
-	        AlertDialog.Builder fenetre = new AlertDialog.Builder(this);
+
+	
+	/***************
+	AlertDialog.Builder fenetre = new AlertDialog.Builder(this);
 	        fenetre.setTitle("Resultat");
 	        fenetre.setPositiveButton("recommencer", new DialogInterface.OnClickListener() {
 	            public void onClick(DialogInterface dialog, int id) {
@@ -206,6 +211,7 @@ public final class TwoPlayers extends Activity {
 
 
 
-	    }     */
+	    }     *     ***************/
+	
 
 	}
