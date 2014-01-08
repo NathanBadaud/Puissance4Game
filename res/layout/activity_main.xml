@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
@@ -8,16 +9,26 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
-
+			
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/connect4"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo" />
+    
     <TableLayout
         android:id="@+id/tableLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="6dp" >
-
+        android:layout_marginTop="20dp" >
+        
+        
         <TableRow
-            android:id="@+id/tableRow1"
+            android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal|center" >
@@ -40,7 +51,7 @@
         </TableRow>
 
         <TableRow
-            android:id="@+id/tableRow4"
+            android:id="@+id/tableRow3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal|center" >
@@ -61,7 +72,7 @@
         </TableRow>
 
         <TableRow
-            android:id="@+id/tableRow2"
+            android:id="@+id/tableRow4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal|center" >
@@ -82,7 +93,7 @@
         </TableRow>
 
         <TableRow
-            android:id="@+id/tableRow3"
+            android:id="@+id/tableRow5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal|center" >
@@ -103,7 +114,7 @@
         </TableRow>
 
         <TableRow
-            android:id="@+id/tableRow5"
+            android:id="@+id/tableRow6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal|center" >
@@ -125,24 +136,17 @@
         </TableRow>
     </TableLayout>
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/textView1"
-        android:contentDescription="@string/connect4"
-        android:src="@drawable/logo" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/imageView1"
+        android:layout_marginTop="14dp"
         android:layout_toRightOf="@+id/imageView1"
+        android:adjustViewBounds="true"
         android:text="@string/titletop"
         android:textColor="@color/DarkRed"
-        android:textSize="43sp"
+        android:textSize="42sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

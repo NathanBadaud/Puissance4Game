@@ -10,8 +10,14 @@
     <string name="connect4">Paris8 - Jeu Puissance 4 </string>
     <string name="titletop">uissance 4 </string>
     <string name="play">1 JOUEUR</string>
+    <string name="timerVal">00:00:00</string>
     <string name="multiplay">2 JOUEURS</string>
     <string name="score">HIGHSCORES</string>
     <string name="about">Apropos</string>
     <string name="exit">QUITTER</string>
+    <string name="s21">21</string>
+    <string name="player1">Joueur 1</string>
+    <string name="player2">Joueur 2</string>
+    <string name="timer">30:00</string>
+    
 </resources>
