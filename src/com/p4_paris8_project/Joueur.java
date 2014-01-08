@@ -12,7 +12,9 @@ public class Joueur {
 	    this.score   = score;
 	    this.isMyTurn = isMyturn;
 	  }
-
+	  public Joueur() {
+		    
+	  }
 	  public String getNom() {
 	    return nom;
 	  }

@@ -31,19 +31,19 @@ public class PlayActivity extends Activity {
 	        final Joueur player1 = new Joueur("Joueur 1",1,21,true);
 	        final Joueur player2 = new Joueur("Joueur 2",2,21,false);
 	        
-	        final Puissance4Game monEspace = new Puissance4Game(6,7,player1,player2);
+	        final Puissance4Game monEspace = new Puissance4Game(8,9,player1,player2);
 	        monEspace.init();
 	        
 	        //Get our linearlayout
 	        final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.grille);
 	        
-	        for (int i = 0; i < monEspace.getRow() ; i++) {
+	        for (int i = monEspace.getLastRow(); i >=1  ; i--) {
 
 	            LinearLayout line = new LinearLayout(this);
 	            line.setOrientation(LinearLayout.HORIZONTAL);
 
 
-	            for (int j = 0; j < monEspace.getColumn(); j++) {
+	            for (int j = 1; j <= monEspace.getLastCol(); j++) {
 	                final int colIndex = j;
 	                monEspace.plateauView[j][i] = new TextView(this);
 	                monEspace.plateauView[j][i].setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
@@ -51,24 +51,29 @@ public class PlayActivity extends Activity {
 	                monEspace.plateauView[j][i].setOnClickListener(new View.OnClickListener() {
 	                    @Override
 	                    public void onClick(View view) {
-	                    	doTimerTask();
-	                        monEspace.verify(colIndex);
 	                        final TextView scoreP1 = (TextView) findViewById(R.id.score1);
 	                        final TextView scoreP2 = (TextView) findViewById(R.id.score2);
 	                    	mytimer = (TextView) findViewById(R.id.timer);
-	                    	
+	                    	//demarrer timer
+	                    	doTimerTask();
+	                    	int result = monEspace.verify(colIndex);
+	                        //set verification of win here 
+	                    	if(result == 1 ){
+	                    		Toast.makeText(getApplicationContext(), 
+	                                    "Joueur 1 remporte le jeu", Toast.LENGTH_LONG).show();
+	                    		//stop the game;
+	                    	}else if( result == 2 ){
+	                    		Toast.makeText(getApplicationContext(), 
+	                                    "Joueur 2 remporte le jeu", Toast.LENGTH_LONG).show();
+	                    		//stop the game;
+	                    	}else if(result == -1 ){
+	                    		Toast.makeText(getApplicationContext(), 
+	                                    "Egalité", Toast.LENGTH_LONG).show();
+	                    		//stop the game;
+	                    	}
+	                        
 	                        scoreP1.setText(String.valueOf(player1.getScore()));
 	                        scoreP2.setText(String.valueOf(player2.getScore()));
-	                    
-	                        //set verification of win here 
-	                        if(monEspace.LookFor4()){
-	                			Toast.makeText(getApplicationContext(), 
-	                                    "You win", Toast.LENGTH_LONG).show();
-	                		}
-	                		else{
-	                			Toast.makeText(getApplicationContext(), 
-	                                    "To be continued", Toast.LENGTH_LONG).show();
-	                		}
 	                    }
 	                });
 	                
