@@ -128,7 +128,7 @@ public class Puissance4Game {
 			plateauView[colIndex][debut].setBackgroundResource(R.drawable.cerclejaune);
             plateau[colIndex][debut] = players[0].getCouleur();
             players[0].setMyTurn(false);
-            players[0].score(players[0].getScore()-1);
+            players[0].setScore(players[0].getScore()-1);
             currentPlayer = players[0];
             //turn on Task
         } else if (plateau[colIndex][debut] == VIDE) {
@@ -136,7 +136,7 @@ public class Puissance4Game {
         	plateauView[colIndex][debut].setBackgroundResource(R.drawable.cerclerouge);
             plateau[colIndex][debut] = players[1].getCouleur();
             players[0].setMyTurn(true);
-            players[1].score(players[1].getScore()-1);
+            players[1].setScore(players[1].getScore()-1);
             currentPlayer = players[1];
             //turn on Task
         }
@@ -151,11 +151,10 @@ public class Puissance4Game {
 	  	//Afficher rejouer ;
 	  	//afficher menu consulter solde
 		}
-	  }else{
-		  //plateau plein , partie null
-		  game = NULL;
-		  return game;
 	  }
+	  
+	  //verifier si aprés jouer , le jeu est a égalité
+	  if(isFull()) game = NULL;
 	  return game;
 	}
 	

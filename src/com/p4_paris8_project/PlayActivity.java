@@ -6,6 +6,7 @@ import java.util.TimerTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ public class PlayActivity extends Activity {
 	TimerTask mTimerTask;
 	final Handler handler = new Handler();
 	Timer t = new Timer();
+	boolean pauseTimer = false;
 	TextView mytimer;
 	// nombre de seconde de jeu
 	private int nCounter = 30;
@@ -28,6 +30,9 @@ public class PlayActivity extends Activity {
 	//creer une classe de jeu;
 	final Puissance4Game monEspace = new Puissance4Game(8, 9, player1, player2);
 	private LinearLayout grille;
+	TextView scoreP1,scoreP2,name1,name2; 
+	int result;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,7 +42,7 @@ public class PlayActivity extends Activity {
 		monEspace.init();
 		// recuperer linear layout qui va contenir le plateau de jeu
 		grille = (LinearLayout) findViewById(R.id.grille);
-
+		
 		for (int i = monEspace.getLastRow(); i >= 1; i--) {
 
 			LinearLayout line = new LinearLayout(this);
@@ -56,6 +61,7 @@ public class PlayActivity extends Activity {
 				.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
+						doTimerTask();
 						TouchVerification(colIndex);
 					}
 				});
@@ -76,80 +82,103 @@ public class PlayActivity extends Activity {
 
 	public void doTimerTask() {
 		stopTask();
+		//verifie si le jeu est active si l'activité est en pause;
+		if(!finished || pauseTimer){
 		mTimerTask = new TimerTask() {
 			public void run() {
 				handler.post(new Runnable() {
 					public void run() {
-						nCounter--;
-						// affiche le timer
-						mytimer.setText(String.valueOf(nCounter));
-						if (nCounter <= 0) {
-							nCounter = 30;
-							// diminuer le score si temps de jeu fini , et
-							// rejouer;
-							int myscore = monEspace.getCurrentPlayer().score();
-							monEspace.getCurrentPlayer().score(myscore - 1);
-						}
+							nCounter++;
+							// affiche le timer
+							mytimer.setText(String.valueOf(nCounter));
+							Log.w("myApp", "it work");
 					}
 				});
 			}
 		};
 
 		t.schedule(mTimerTask, 0, 1000); //chaque 1 seconde ++ 
-
+	 }
 	}
 
 	public void stopTask() {
 
 		if (mTimerTask != null) {
-			nCounter = 30;
+			nCounter = 0;
 			mytimer.setText(String.valueOf(nCounter));
 			mTimerTask.cancel();
+			Log.w("myApp", "stop");
 		}
 
 	}
 	
 	public void TouchVerification(int colIndex){
-		final TextView scoreP1 = (TextView) findViewById(R.id.score1);
-		final TextView scoreP2 = (TextView) findViewById(R.id.score2);
-		final TextView name1 = (TextView) findViewById(R.id.name1);
-		final TextView name2 = (TextView) findViewById(R.id.name2);
 		mytimer = (TextView) findViewById(R.id.timer);
-		// demarrer timer
-		doTimerTask();
-		int result = monEspace.verify(colIndex);
+		scoreP1 = (TextView) findViewById(R.id.score1);
+		scoreP2 = (TextView) findViewById(R.id.score2);
+		name1 = (TextView) findViewById(R.id.name1);
+		name2 = (TextView) findViewById(R.id.name2);
+	    result = monEspace.verify(colIndex);
 		// si le jeu est terminé (result = 0 -> en cours)
 		if(result !=0 && !finished){
+			// demarrer timer
 			//pour ne pas rentrer a chaque verification aprés la fin du jeu
 			finished = true;
 			if (result == 1) {
-				Toast.makeText(getApplicationContext(),
-						"Joueur 1 remporte le jeu",
-						Toast.LENGTH_LONG).show();
-				name1.setTextColor(getResources().getColor(R.color.gold));
-				blink(name1);
-				grille.setBackgroundResource(R.drawable.done);
+				DisplayWinner(name1,player1);
 			} else if (result == 2) {
-				Toast.makeText(getApplicationContext(),
-						"Joueur 2 remporte le jeu",
-						Toast.LENGTH_LONG).show();
-				name2.setTextColor(getResources().getColor(R.color.gold));
-				blink(name2);
-				grille.setBackgroundResource(R.drawable.done);
-				
+				DisplayWinner(name2,player2);
 			} else if (result == -1) {
-				Toast.makeText(getApplicationContext(),
-						"Egalité", Toast.LENGTH_LONG)
-						.show();
-				grille.setBackgroundResource(R.drawable.equal);
+				checkWinner();
 			}
-			//stop timer ;
-			stopTask();
+			stopTask();//stop timer ;
 		}
+		
+		// augmente le temps de reflexion du joueur
+		int oldTime = monEspace.getCurrentPlayer().getTempsReflexion();
+		monEspace.getCurrentPlayer().setTempsReflexion(oldTime + nCounter);
+		
+		//afficher le score courant;
 		scoreP1.setText(String.valueOf(player1
 				.getScore()));
 		scoreP2.setText(String.valueOf(player2
 				.getScore()));
+	}
+	//verifie le gagnant si le jeu est nulle;
+	void checkWinner(){
+		int p1Time = player1.getTempsReflexion();
+		int p2Time = player2.getTempsReflexion();
+		if(p1Time > p2Time){
+			//joueur 2 gagne;
+			DisplayWinner(name2,player2);
+			//mettre a zéro le score du joueur qui a perdu
+			player1.setScore(0);
+			//enregistrer le score dans la base
+			
+		}else if (p2Time > p1Time){
+			//joueur 1 gagne;
+			DisplayWinner(name1,player1);
+			//mettre a zéro le score du joueur qui a perdu
+			player2.setScore(0);
+			//enregistrer le score dans la base
+			
+		}else{
+			Toast.makeText(getApplicationContext(),
+					"Partie sans gagnant", Toast.LENGTH_LONG)
+					.show();
+			grille.setBackgroundResource(R.drawable.equal);
+		}//pas de gagnant(egalité temps)
+		
+	}
+	
+	//afficher le gagnant
+	void DisplayWinner(TextView gagnant,Joueur player){
+		Toast.makeText(getApplicationContext(),
+				player.getNom()+" remporte le jeu",
+				Toast.LENGTH_LONG).show();
+		gagnant.setTextColor(getResources().getColor(R.color.gold));
+		blink(gagnant);
+		grille.setBackgroundResource(R.drawable.done);
 	}
 	
 	public void blink(final TextView txt){
@@ -173,5 +202,18 @@ public class PlayActivity extends Activity {
 	                });
 	            }
 	        }).start();
-	    }
+	}
+	//bloquer le button retour 
+	@Override
+	public void onBackPressed() {	
+	      return;
+	}
+	 
+	@Override
+	protected void onPause() {
+        super.onPause();	
+		pauseTimer = true;
+	}
+	
+	
 }
