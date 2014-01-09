@@ -14,13 +14,13 @@ public class Puissance4Game {
     private int NULL = -1;
     public int plateau[][];
     public TextView plateauView[][];
-    //for calculate score;
+    
     public final static int VIDE = 0;
 
   //on declare les differentes possibiltés de recheche possible
     final static int [] horiz = new int[] {1,0}; //Horizontale
     final static int [] verti = new int[] {0,1}; //Verticale
-    final static int [] up = new int[] {1,1}; // diagonale en mantant
+    final static int [] up = new int[] 	  {1,1}; // diagonale en mantant
     final static int [] down = new int[] {1,-1}; // diagonale en descendant
     //mettre toutes les possibiltés dans un tableau;
     final static int [][] possibilities = new int[][] { horiz  , verti  , up  , down }; // possibiltés
@@ -50,7 +50,7 @@ public class Puissance4Game {
         }
 
     }
-    //reset the game
+    //reset le jeu
     public void reset() {
         for (int i = 0; i < getRow(); i++) {
             for (int j = 0; j < getColumn(); j++) {
@@ -106,32 +106,39 @@ public class Puissance4Game {
 	public void setLastCol(int lastCol) {
 		LastCol = lastCol;
 	}
+	
+	public Joueur getCurrentPlayer() {
+		return currentPlayer;
+	}
 
+
+	public void setCurrentPlayer(Joueur currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
 
 	public int verify(int colIndex){
-	//verify if plateau is full
+	//verifie si le jeu est pas terminé 
+	if(game!=0) return game;
+	//verifie si le plateau est plein
 	  if(!isFull()){
 		int debut;
 		 debut = debut_colonne(colIndex);
 		if (players[0].isMyTurn() && plateau[colIndex][debut] == VIDE) {
         	//create an animation method to animate set of cells
 			plateauView[colIndex][debut].setBackgroundResource(R.drawable.cerclejaune);
-            plateau[colIndex][debut] = 1;
+            plateau[colIndex][debut] = players[0].getCouleur();
             players[0].setMyTurn(false);
-            players[0].score(players[1].getScore()-1);
+            players[0].score(players[0].getScore()-1);
             currentPlayer = players[0];
             //turn on Task
         } else if (plateau[colIndex][debut] == VIDE) {
         	//create an animation method to animate set of cells
         	plateauView[colIndex][debut].setBackgroundResource(R.drawable.cerclerouge);
-            plateau[colIndex][debut] = -1;
+            plateau[colIndex][debut] = players[1].getCouleur();
             players[0].setMyTurn(true);
             players[1].score(players[1].getScore()-1);
-            currentPlayer = players[0];
+            currentPlayer = players[1];
             //turn on Task
-
-        }else{
-        	//
         }
 	
 		//on met le code du joueur courant
@@ -151,7 +158,8 @@ public class Puissance4Game {
 	  }
 	  return game;
 	}
-
+	
+	//Cherche 4 pions de la meme couleur;
 	private Boolean lookFor4(int column, int line,int [] directionOfsearch){
 		int columnToverify = column + directionOfsearch[0] ;//horizontale (0)
 		int lineToverify = line + directionOfsearch[1] ;//vertical (0)
@@ -163,7 +171,7 @@ public class Puissance4Game {
 	  }
 	  //verifier de l’autre coté contraire
 		 columnToverify = column - directionOfsearch[0] ;//horizontale (0);
-		 lineToverify = line - directionOfsearch[1] ;//vertical (0);
+		lineToverify = line - directionOfsearch[1] ;//vertical (0);
 		 int  countbefore = 0; //compter combien de la meme couleur avant
 	  while(plateau[columnToverify][ lineToverify] == currentPlayer.getCouleur()){
 	  		columnToverify -= directionOfsearch[0]; //horizontale (0);
@@ -180,7 +188,7 @@ public class Puissance4Game {
 				return true; // on a une sequence de 4 pions valide ->on a gagnant
 			}
 		}	
-	  return false; // on a une sequence de 4 pions valide ->pas de gagnant ->jeu continue
+	  return false; // on a pas une sequence de 4 pions valide ->pas de gagnant ->jeu continue
 	}
 	
 	
@@ -196,4 +204,7 @@ public class Puissance4Game {
 		}
 		return true;
 	}
+
+
+
 }
