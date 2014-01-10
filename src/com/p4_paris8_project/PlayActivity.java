@@ -6,8 +6,10 @@ import java.util.TimerTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -22,7 +24,7 @@ public class PlayActivity extends Activity {
 	boolean pauseTimer = false;
 	TextView mytimer;
 	// nombre de seconde de jeu
-	private int nCounter = 0;
+	private int nCounter = 0,currentTimerValue;
 	private boolean finished = false;
 	//Deux joeur initials
 	final Joueur player1 = new Joueur("Joueur 1", 1, 21, true);
@@ -72,15 +74,47 @@ public class PlayActivity extends Activity {
 			grille.addView(line);
 		}
 	}
-
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.play, menu);
 		return true;
 	}
+    public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		    case R.id.replay:
+		    	replay();
+			    return true;
+		    case R.id.about:
+		    	about();
+			    return true;
+		    case R.id.exit:
+		    	System.exit(0);
+			    return true;
+		    default:
+		    return super.onOptionsItemSelected(item);
+		}
+	}
+    public void replay() {
 
+        Intent intent = getIntent();
+        overridePendingTransition(0, 0);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        finish();
+
+        overridePendingTransition(0, 0);
+        startActivity(intent);
+    }
+    public void about() {
+
+    	Intent intent = new Intent(this, Apropos.class);
+        startActivity(intent);
+
+    }
 	public void doTimerTask() {
+		currentTimerValue = nCounter;
 		stopTask();
 		//verifie si le jeu est active si l'activité est en pause;
 		if(!finished || pauseTimer){
@@ -136,7 +170,7 @@ public class PlayActivity extends Activity {
 		
 		// augmente le temps de reflexion du joueur
 		int oldTime = monEspace.getCurrentPlayer().getTempsReflexion();
-		monEspace.getCurrentPlayer().setTempsReflexion(oldTime + nCounter);
+		monEspace.getCurrentPlayer().setTempsReflexion(oldTime + currentTimerValue);
 		
 		//afficher le score courant;
 		scoreP1.setText(String.valueOf(player1
@@ -148,6 +182,10 @@ public class PlayActivity extends Activity {
 	void checkWinner(){
 		int p1Time = player1.getTempsReflexion();
 		int p2Time = player2.getTempsReflexion();
+		//declarrer partie nulle
+		Toast.makeText(getApplicationContext(),
+				"Partie nulle", Toast.LENGTH_LONG)
+				.show();
 		if(p1Time > p2Time){
 			//joueur 2 gagne;
 			DisplayWinner(name2,player2);
@@ -203,7 +241,7 @@ public class PlayActivity extends Activity {
 	            }
 	        }).start();
 	}
-	//bloquer le button retour 
+	//bloquer le button retour : a activer aprés
 	/*@Override
 	public void onBackPressed() {	
 	      return;
@@ -214,6 +252,11 @@ public class PlayActivity extends Activity {
         super.onPause();	
 		pauseTimer = true;
 	}
-	
+	//poursuivre le timer 
+	@Override
+	protected void onResume() {
+        super.onPause();	
+		pauseTimer = false;
+	}
 	
 }

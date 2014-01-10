@@ -1,16 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
 	<item android:id="@+id/score"
-	    android:icon="@drawable/score"
 	    android:title="@string/score" />
 	
 	<item android:id="@+id/about"
-	    android:icon="@drawable/about"
 	    android:title="@string/about" />
 
 	
 	<item android:id="@+id/exit"
-	    android:icon="@drawable/exit"
 	    android:title="@string/exit" />
 
 </menu>

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -30,16 +31,15 @@ public class MainActivity extends Activity {
 
 	    }
 	    public void one_player(View view) {
-
-	        Intent intent = new Intent(this, PlayActivity.class);
-	        startActivity(intent);
+	    	indispo();
+	        //Intent intent = new Intent(this, PlayActivity.class);
+	        //startActivity(intent);
 
 	    }
 	    public void score(View view) {
 
 
-	        Intent intent = new Intent(this, PlayActivity.class);
-	        startActivity(intent);
+	    	indispo();
 
 	    }
 
@@ -53,14 +53,15 @@ public class MainActivity extends Activity {
 	    public void exit(View view) {
 	    	System.exit(0);
 	    }
-	    
+	    public void indispo(){
+	    	Toast.makeText(getApplicationContext(),
+					"pas encore disponible", Toast.LENGTH_LONG)
+					.show();
+	    }
 	    public boolean onOptionsItemSelected(MenuItem item) {
 			switch (item.getItemId()) {
 			    case R.id.score:
-				    return true;
-			    case R.id.about:
-		               Intent i = new Intent(MainActivity.this, Apropos.class);
-		               startActivity(i);
+			    	indispo();
 				    return true;
 			    case R.id.exit:
 			    	System.exit(0);

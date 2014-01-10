@@ -14,12 +14,14 @@
     <string name="multiplay">2 JOUEURS</string>
     <string name="score">HIGHSCORES</string>
     <string name="about">Apropos</string>
-    <string name="exit">QUITTER</string>
+    <string name="exit">Quitter</string>
     <string name="s21">21</string>
+    <string name="replay">Replay</string>
+    <string name="menu">Menu principale</string>
     <string name="player1">Joueur 1</string>
     <string name="player2">Joueur 2</string>
     <string name="timer">00:00</string>
     <string name="title_activity_apropos">à propos</string>
-    <string name="txtapropos">ce jeu est réalisé par GOURGAN Hicham et AZIZ , étudiants de l\'université PARIS 8</string>
+    <string name="txtapropos">Ce jeu est réalisé par GOURGAN Hicham et AZIZ Ibazizene , étudiants de l\'université PARIS 8</string>
     
 </resources>

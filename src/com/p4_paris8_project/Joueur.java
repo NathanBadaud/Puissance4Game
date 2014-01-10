@@ -12,7 +12,7 @@ public class Joueur {
 	    this.couleur = couleur;
 	    this.score   = score;
 	    this.isMyTurn = isMyturn;
-	    this.tempsReflexion = 30;
+	    this.tempsReflexion = 0;
 	  }
 	  public Joueur() {
 		    
