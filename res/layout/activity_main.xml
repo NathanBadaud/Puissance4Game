@@ -92,12 +92,7 @@
                  />
         </TableRow>
 
-        <TableRow
-            android:id="@+id/tableRow5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal|center" >
-        </TableRow>
+      
 
         <TableRow
             android:id="@+id/tableRow6"
@@ -106,18 +101,18 @@
             android:gravity="center_vertical|center_horizontal|center" >
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_marginRight="6dp"
                 android:background="@drawable/button"
-                android:drawableLeft="@drawable/exit"
+                android:drawableLeft="@drawable/about"
                 android:gravity="center|left"
-                android:text="@string/exit"
+                android:text="@string/about"
                 android:textStyle="bold" 
                 android:drawablePadding="46dp"
-                android:onClick="exit"
+                android:onClick="about"
                  />
         </TableRow>
     </TableLayout>
