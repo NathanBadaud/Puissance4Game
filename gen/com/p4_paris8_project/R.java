@@ -39,60 +39,65 @@ public final class R {
     }
     public static final class drawable {
         public static final int about=0x7f020000;
-        public static final int beige=0x7f020001;
-        public static final int button=0x7f020002;
-        public static final int cerclejaune=0x7f020003;
-        public static final int cerclejaunesmall=0x7f020004;
-        public static final int cerclerouge=0x7f020005;
-        public static final int cerclerougesmall=0x7f020006;
-        public static final int done=0x7f020007;
-        public static final int equal=0x7f020008;
-        public static final int exit=0x7f020009;
-        public static final int gamebackground=0x7f02000a;
-        public static final int grille=0x7f02000b;
-        public static final int grilleelement=0x7f02000c;
-        public static final int ic_launcher=0x7f02000d;
-        public static final int jouer=0x7f02000e;
-        public static final int logo=0x7f02000f;
-        public static final int oneplayer=0x7f020010;
-        public static final int score=0x7f020011;
-        public static final int timer=0x7f020012;
-        public static final int twoplayer=0x7f020013;
-        public static final int vide=0x7f020014;
+        public static final int back=0x7f020001;
+        public static final int beige=0x7f020002;
+        public static final int button=0x7f020003;
+        public static final int cerclejaune=0x7f020004;
+        public static final int cerclejaunesmall=0x7f020005;
+        public static final int cerclerouge=0x7f020006;
+        public static final int cerclerougesmall=0x7f020007;
+        public static final int done=0x7f020008;
+        public static final int equal=0x7f020009;
+        public static final int exit=0x7f02000a;
+        public static final int gamebackground=0x7f02000b;
+        public static final int grille=0x7f02000c;
+        public static final int grilleelement=0x7f02000d;
+        public static final int ic_launcher=0x7f02000e;
+        public static final int jouer=0x7f02000f;
+        public static final int logo=0x7f020010;
+        public static final int oneplayer=0x7f020011;
+        public static final int score=0x7f020012;
+        public static final int timer=0x7f020013;
+        public static final int twoplayer=0x7f020014;
+        public static final int vide=0x7f020015;
     }
     public static final class id {
-        public static final int action_settings=0x7f090017;
-        public static final int affichageNames=0x7f09000e;
-        public static final int affichagebar=0x7f090012;
+        public static final int about=0x7f090018;
+        public static final int action_settings=0x7f090016;
+        public static final int affichageNames=0x7f09000d;
+        public static final int affichagebar=0x7f090011;
         public static final int button1=0x7f090004;
         public static final int button2=0x7f090008;
-        public static final int button3=0x7f09000a;
         public static final int button4=0x7f090006;
-        public static final int button5=0x7f09000c;
-        public static final int game_container=0x7f09000d;
-        public static final int grille=0x7f090016;
-        public static final int imageView1=0x7f090000;
-        public static final int name1=0x7f090013;
-        public static final int name2=0x7f090015;
-        public static final int score1=0x7f09000f;
-        public static final int score2=0x7f090011;
-        public static final int tableLayout1=0x7f090001;
+        public static final int button5=0x7f09000b;
+        public static final int exit=0x7f090019;
+        public static final int game_container=0x7f09000c;
+        public static final int grille=0x7f090015;
+        public static final int imageView1=0x7f090001;
+        public static final int name1=0x7f090012;
+        public static final int name2=0x7f090014;
+        public static final int score=0x7f090017;
+        public static final int score1=0x7f09000e;
+        public static final int score2=0x7f090010;
+        public static final int tableLayout1=0x7f090002;
         public static final int tableRow2=0x7f090003;
         public static final int tableRow3=0x7f090005;
         public static final int tableRow4=0x7f090007;
         public static final int tableRow5=0x7f090009;
-        public static final int tableRow6=0x7f09000b;
-        public static final int textView1=0x7f090002;
-        public static final int timer=0x7f090010;
-        public static final int vide=0x7f090014;
+        public static final int tableRow6=0x7f09000a;
+        public static final int textView1=0x7f090000;
+        public static final int timer=0x7f09000f;
+        public static final int vide=0x7f090013;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_play=0x7f030001;
+        public static final int activity_apropos=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_play=0x7f030002;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
-        public static final int play=0x7f080001;
+        public static final int apropos=0x7f080000;
+        public static final int main=0x7f080001;
+        public static final int play=0x7f080002;
     }
     public static final class string {
         public static final int about=0x7f06000c;
@@ -111,8 +116,10 @@ public final class R {
         public static final int score=0x7f06000b;
         public static final int timer=0x7f060011;
         public static final int timerVal=0x7f060009;
+        public static final int title_activity_apropos=0x7f060012;
         public static final int title_activity_play=0x7f060003;
         public static final int titletop=0x7f060007;
+        public static final int txtapropos=0x7f060013;
     }
     public static final class style {
         /** 

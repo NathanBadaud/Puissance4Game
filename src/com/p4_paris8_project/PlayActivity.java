@@ -22,7 +22,7 @@ public class PlayActivity extends Activity {
 	boolean pauseTimer = false;
 	TextView mytimer;
 	// nombre de seconde de jeu
-	private int nCounter = 30;
+	private int nCounter = 0;
 	private boolean finished = false;
 	//Deux joeur initials
 	final Joueur player1 = new Joueur("Joueur 1", 1, 21, true);
@@ -204,11 +204,11 @@ public class PlayActivity extends Activity {
 	        }).start();
 	}
 	//bloquer le button retour 
-	@Override
+	/*@Override
 	public void onBackPressed() {	
 	      return;
 	}
-	 
+	 */
 	@Override
 	protected void onPause() {
         super.onPause();	

@@ -1,9 +1,11 @@
 package com.p4_paris8_project;
 
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends Activity {
@@ -43,7 +45,7 @@ public class MainActivity extends Activity {
 
 	    public void about(View view) {
 
-	        Intent intent = new Intent(this, PlayActivity.class);
+	        Intent intent = new Intent(this, Apropos.class);
 	        startActivity(intent);
 
 	    }
@@ -51,4 +53,20 @@ public class MainActivity extends Activity {
 	    public void exit(View view) {
 	    	System.exit(0);
 	    }
+	    
+	    public boolean onOptionsItemSelected(MenuItem item) {
+			switch (item.getItemId()) {
+			    case R.id.score:
+				    return true;
+			    case R.id.about:
+		               Intent i = new Intent(MainActivity.this, Apropos.class);
+		               startActivity(i);
+				    return true;
+			    case R.id.exit:
+			    	System.exit(0);
+				    return true;
+			    default:
+			    return super.onOptionsItemSelected(item);
+			}
+		}
 }

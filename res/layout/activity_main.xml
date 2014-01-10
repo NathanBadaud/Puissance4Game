@@ -97,20 +97,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal|center" >
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/button"
-                android:drawableLeft="@drawable/about"
-                android:gravity="center|left"
-                android:text="@string/about"
-                android:textStyle="bold" 
-                android:drawablePadding="46dp" 
-                android:onClick="about"
-                />
         </TableRow>
 
         <TableRow
